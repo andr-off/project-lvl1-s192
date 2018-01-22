@@ -1,6 +1,6 @@
 {
   "name": "another-brain-games-project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,9 @@
     "babel-core": "*",
     "babel-preset-env": "*",
     "babel-preset-stage-0": "*"
+  },
+  "dependencies": {
+    "readline-sync": "*"
   },
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
