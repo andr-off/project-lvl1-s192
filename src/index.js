@@ -1,6 +1,3 @@
-import readlineSync from 'readline-sync';
+import evenGame from './even';
 
-export default () => {
-  const answer = readlineSync.question('\nMay I have your name? ');
-  console.log(`Hello, ${answer}!`);
-};
+export default evenGame;
