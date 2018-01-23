@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import main from '..';
+import engine from '..';
 
-main();
+engine(() => 'empty', '');
