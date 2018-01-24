@@ -16,7 +16,7 @@ export default (game, rules) => {
     } else if (gameResult.isCorrect) {
       console.log('Correct!');
     } else {
-      console.log(`${gameResult.playerAnswer} is wrong ;(. Correct answer was ${gameResult.rightAnswer}`);
+      console.log(`${gameResult.playerAnswer} is wrong ;(. Correct answer was ${gameResult.rightAnswer}\nLet's try again, ${playerName}!`);
       break;
     }
 

@@ -35,3 +35,22 @@ export const gcd = (num1, num2) => {
   };
   return iter(num1, num2, smaller);
 };
+
+export const balance = (number) => {
+  const splited = String(number).split('');
+  const biggest = Math.max(...splited);
+  const smallest = Math.min(...splited);
+
+  if (biggest - smallest <= 1) {
+    return splited
+      .sort((a, b) => a - b)
+      .join('');
+  }
+
+  const indexOfBiggest = splited.indexOf(biggest.toString());
+  const indexOfSmallest = splited.indexOf(smallest.toString());
+  splited[indexOfBiggest] = biggest - 1;
+  splited[indexOfSmallest] = smallest + 1;
+
+  return balance(Number(splited.join('')));
+};
