@@ -1,22 +1,15 @@
-import readlineSync from 'readline-sync';
 import { getRandomNumber, isEven } from '../lib';
+import engine from '..';
 
 export default () => {
-  const accuracy = 100;
-  const randomNumber = getRandomNumber(1, accuracy);
-  console.log(`Question: ${randomNumber}`);
-  const answer = readlineSync.question('Your answer: ');
-  const result = answer === 'yes' ? 'no' : 'yes';
-  const gameResult = {
-    isCorrect: false,
-    playerAnswer: answer,
-    rightAnswer: result,
+  const game = (num) => {
+    if (isEven(num)) {
+      return 'yes';
+    }
+    return 'no';
   };
 
-  if ((isEven(randomNumber) && answer === 'yes') ||
-      (!isEven(randomNumber) && answer === 'no')) {
-    gameResult.isCorrect = true;
-  }
+  const description = '\nAnswer "yes" if number even otherwise answer "no".';
 
-  return gameResult;
+  engine(description, () => getRandomNumber(1, 100), game);
 };

@@ -2,4 +2,4 @@
 
 import engine from '..';
 
-engine(() => 'empty', '');
+engine();

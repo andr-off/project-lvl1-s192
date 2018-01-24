@@ -1,23 +1,20 @@
-import readlineSync from 'readline-sync';
 import { getRandomNumber, gcd } from '../lib';
+import engine from '..';
 
 export default () => {
-  const accuracy = 100;
-  const number1 = getRandomNumber(1, accuracy);
-  const number2 = getRandomNumber(1, accuracy);
-
-  console.log(`Question: ${number1} ${number2}`);
-  const answer = readlineSync.question('Your answer: ');
-  const result = gcd(number1, number2);
-  const gameResult = {
-    isCorrect: false,
-    playerAnswer: answer,
-    rightAnswer: result,
+  const gameStuff = () => {
+    const accuracy = 100;
+    const number1 = getRandomNumber(1, accuracy);
+    const number2 = getRandomNumber(1, accuracy);
+    return (`${number1} ${number2}`);
   };
 
-  if (Number(answer) === result) {
-    gameResult.isCorrect = true;
-  }
+  const game = (expression) => {
+    const [number1, number2] = expression.split(' ');
+    return gcd(Number(number1), Number(number2)).toString();
+  };
 
-  return gameResult;
+  const description = '\nFind the greatest common divisor of given numbers.';
+
+  engine(description, gameStuff, game);
 };
