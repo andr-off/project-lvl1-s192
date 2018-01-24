@@ -10,14 +10,15 @@ export default () => {
   console.log(`Question: ${randomExpression}`);
   const answer = readlineSync.question('Your answer: ');
   const result = calc(number1, number2, operator);
-  const gameResult = [];
+  const gameResult = {
+    isCorrect: false,
+    playerAnswer: answer,
+    rightAnswer: result,
+  };
 
   if (Number(answer) === result) {
     gameResult.isCorrect = true;
-  } else {
-    gameResult.isCorrect = false;
-    gameResult.playerAnswer = answer;
-    gameResult.rightAnswer = result;
   }
+
   return gameResult;
 };
