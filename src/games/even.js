@@ -1,10 +1,9 @@
 import readlineSync from 'readline-sync';
-
-const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + min));
-const isEven = number => number % 2 === 0;
+import { getRandomNumber, isEven } from '../lib';
 
 export default () => {
-  const randomNumber = getRandomNumber(1, 100);
+  const accuracy = 100;
+  const randomNumber = getRandomNumber(2, accuracy);
   console.log(`Question: ${randomNumber}`);
   const answer = readlineSync.question('Your answer: ');
   const gameResult = {};

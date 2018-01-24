@@ -1,24 +1,5 @@
 import readlineSync from 'readline-sync';
-
-const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + min));
-const getRandomOperator = () => ['+', '-', '*'][getRandomNumber(0, 3)];
-const calc = (num1, num2, op) => {
-  let result;
-  switch (op) {
-    case '+':
-      result = num1 + num2;
-      break;
-    case '-':
-      result = num1 - num2;
-      break;
-    case '*':
-      result = num1 * num2;
-      break;
-    default:
-      result = null;
-  }
-  return result;
-};
+import { getRandomNumber, getRandomOperator, calc } from '../lib';
 
 export default () => {
   const accuracy = 10;
