@@ -10,7 +10,12 @@ export default (description, rules) => {
 
   console.log(`Hello, ${playerName}!\n`);
 
-  for (let i = 0; i < rightAnswerCount; i += 1) {
+  const iter = (acc) => {
+    if (acc === rightAnswerCount) {
+      console.log(`Congratulations, ${playerName}!`);
+      return null;
+    }
+
     const [question, result] = rules();
 
     console.log(`Question: ${question}`);
@@ -19,14 +24,11 @@ export default (description, rules) => {
 
     if (answer === result) {
       console.log('Correct!');
-    } else {
-      const message = `${answer} is wrong ;(. Correct answer was ${result}\nLet's try again, ${playerName}!`;
-      console.log(message);
-      break;
+      return iter(acc + 1);
     }
-
-    if (i === (rightAnswerCount - 1)) {
-      console.log(`Congratulations, ${playerName}!`);
-    }
-  }
+    const message = `${answer} is wrong ;(. Correct answer was ${result}\nLet's try again, ${playerName}!`;
+    console.log(message);
+    return null;
+  };
+  iter(0);
 };
