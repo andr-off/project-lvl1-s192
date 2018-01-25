@@ -2,19 +2,15 @@ import { getRandomNumber, gcd } from '../lib';
 import engine from '..';
 
 export default () => {
-  const gameStuff = () => {
+  const rules = () => {
     const accuracy = 100;
     const number1 = getRandomNumber(1, accuracy);
     const number2 = getRandomNumber(1, accuracy);
-    return (`${number1} ${number2}`);
+    const question = (`${number1} ${number2}`);
+    const answer = gcd(number1, number2).toString();
+    return [question, answer];
   };
+  const description = 'Find the greatest common divisor of given numbers.';
 
-  const game = (expression) => {
-    const [number1, number2] = expression.split(' ');
-    return gcd(Number(number1), Number(number2)).toString();
-  };
-
-  const description = '\nFind the greatest common divisor of given numbers.';
-
-  engine(description, gameStuff, game);
+  engine(description, rules);
 };

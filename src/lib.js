@@ -25,32 +25,31 @@ export const calc = (num1, num2, op) => {
 
 export const isEven = number => number % 2 === 0;
 
-export const gcd = (num1, num2) => {
-  const smaller = num1 < num2 ? num1 : num2;
-  const iter = (n1, n2, acc) => {
-    if (n1 % acc === 0 && n2 % acc === 0) {
-      return acc;
+export const gcd = (a, b) => {
+  if ((a !== 0) && (b !== 0)) {
+    if (a > b) {
+      return gcd((a % b), b);
     }
-    return iter(n1, n2, acc - 1);
-  };
-  return iter(num1, num2, smaller);
+    return gcd((b % a), a);
+  }
+  return a + b;
 };
 
 export const balance = (number) => {
-  const splited = String(number).split('');
-  const biggest = Math.max(...splited);
-  const smallest = Math.min(...splited);
+  const digits = String(number).split('');
+  const biggest = Math.max(...digits);
+  const smallest = Math.min(...digits);
 
   if (biggest - smallest <= 1) {
-    return splited
+    return digits
       .sort((a, b) => a - b)
       .join('');
   }
 
-  const indexOfBiggest = splited.indexOf(biggest.toString());
-  const indexOfSmallest = splited.indexOf(smallest.toString());
-  splited[indexOfBiggest] = biggest - 1;
-  splited[indexOfSmallest] = smallest + 1;
+  const indexOfBiggest = digits.indexOf(biggest.toString());
+  const indexOfSmallest = digits.indexOf(smallest.toString());
+  digits[indexOfBiggest] = biggest - 1;
+  digits[indexOfSmallest] = smallest + 1;
 
-  return balance(Number(splited.join('')));
+  return balance(Number(digits.join('')));
 };

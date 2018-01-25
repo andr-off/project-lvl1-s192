@@ -2,9 +2,13 @@ import { getRandomNumber, balance } from '../lib';
 import engine from '..';
 
 export default () => {
-  const game = num => balance(Number(num));
+  const rules = () => {
+    const question = getRandomNumber(100, 1000);
+    const answer = balance(question);
+    return [question, answer];
+  };
 
-  const description = '\nBalance the given number.';
+  const description = 'Balance the given number.';
 
-  engine(description, () => getRandomNumber(100, 1000), game);
+  engine(description, rules);
 };

@@ -2,14 +2,13 @@ import { getRandomNumber, isEven } from '../lib';
 import engine from '..';
 
 export default () => {
-  const game = (num) => {
-    if (isEven(num)) {
-      return 'yes';
-    }
-    return 'no';
+  const rules = () => {
+    const question = getRandomNumber(1, 100);
+    const answer = isEven(question) ? 'yes' : 'no';
+    return [question, answer];
   };
 
-  const description = '\nAnswer "yes" if number even otherwise answer "no".';
+  const description = 'Answer "yes" if number even otherwise answer "no".';
 
-  engine(description, () => getRandomNumber(1, 100), game);
+  engine(description, rules);
 };
