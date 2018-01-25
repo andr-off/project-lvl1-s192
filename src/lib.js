@@ -57,12 +57,21 @@ export const balance = (number) => {
 export const getRandomProgression = (amount) => {
   const startValue = getRandomNumber(1, 100);
   const step = getRandomNumber(1, 16);
-  const iter = (c, acc) => {
-    if (c === amount + 1) {
+  const iter = (count, acc) => {
+    if (count === amount + 1) {
       return acc;
     }
-    acc.push((c * step) + startValue);
-    return iter(c + 1, acc);
+    acc.push((count * step) + startValue);
+    return iter(count + 1, acc);
   };
   return iter(1, []);
+};
+
+export const isPrime = (num) => {
+  for (let i = 2; i <= num / 2; i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
 };
