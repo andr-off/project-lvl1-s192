@@ -9,8 +9,7 @@ export default () => {
     return [question, answer];
   };
 
-  // const description = 'Answer "yes" if number prime otherwise answer "no".';
-  const description = '';
+  const description = 'Answer "yes" if number prime otherwise answer "no".';
 
   engine(description, rules);
 };

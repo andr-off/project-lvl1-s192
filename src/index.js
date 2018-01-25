@@ -30,5 +30,6 @@ export default (description, rules) => {
     console.log(message);
     return null;
   };
+
   iter(0);
 };
