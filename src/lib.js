@@ -53,3 +53,16 @@ export const balance = (number) => {
 
   return balance(Number(digits.join('')));
 };
+
+export const getRandomProgression = (amount) => {
+  const startValue = getRandomNumber(1, 100);
+  const step = getRandomNumber(1, 16);
+  const iter = (c, acc) => {
+    if (c === amount + 1) {
+      return acc;
+    }
+    acc.push((c * step) + startValue);
+    return iter(c + 1, acc);
+  };
+  return iter(1, []);
+};
